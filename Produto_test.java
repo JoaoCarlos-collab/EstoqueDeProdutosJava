@@ -55,10 +55,10 @@ public class Produto_test{
                         System.out.println(" ");
                         System.out.println("LISTA DE PRODUTOS");
                         System.out.println(" ");
-                        System.out.println(Estoque);
 
                         if (Estoque.isEmpty()){
                             System.out.println("ESTOQUE VAZIO");
+                            System.out.println(" ");
 
                         }else{
                             for(int i = 0; i < Estoque.size(); i++){
@@ -66,13 +66,50 @@ public class Produto_test{
 
                             }
                         }break;
-                    
-                }
 
+                    case 3:
+                        
+                        System.out.println("REMOVER PRODUTOS (POR NOME)");
+                        System.out.println(" ");
+                        System.out.println("DIGITE O NOME DO PRODUTO QUE VOCÊ DESEJA REMOVER");
+                        String remover_produto = input.nextLine();
+
+                        if (Estoque.isEmpty()){
+                            System.out.println("O ESTOQUE ESTÁ VAZIO");
+                            System.out.println(" ");
+                            break;
+
+                        }boolean produto_removido = false;
+
+                        for (int i = Estoque.size() - 1; i >= 0; i --){
+                            if (Estoque.get(i).getNome().equalsIgnoreCase(remover_produto)){
+                                Produto removeu_produto = Estoque.remove(i);
+                                System.out.println("PRODUTO: "+ removeu_produto.getNome());
+                                System.out.println("REMOVIDO COM SUCESSO");
+                                System.out.println(" ");
+                                produto_removido = true;
+                                break;
+                            }
+                        }if (!produto_removido){
+                            System.out.println("PRODUTO: "+ remover_produto);
+                            System.out.println("NÃO ENCONTRADO NO SEU ESTOQUE");
+                            System.out.println(" ");
+                            break;
+                        }
+                    case 0:
+                        System.out.println("OPERAÇÃO FINALIZADA");
+                        break;
                 
-            } catch (Exception e) {
+                    default:
+                        System.out.println("ERRO: OPÇÃO INVÁLIDA, TENTE USAR NÚMEROS QUE ESTÃO ENTRE 0 E 3");
+                }
+                
+            } catch (java.util.InputMismatchException excessão) {
+                System.out.println("ESSE VALOR NÃO É VÁLIDO. APERTE UMA TECLA PARA CONTINUAR.");
+                input.nextLine();
+                opcao = -1;
             }
             
-        } while (true);
+        } while (opcao != 0);
     }
 }
