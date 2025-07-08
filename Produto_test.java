@@ -38,7 +38,11 @@ public class Produto_test{
                         double Preco_Produto = input.nextDouble();
                         input.nextLine();
 
-                        Produto novo_produto = new Produto(Nome_Produto, Preco_Produto);
+                        System.out.print("ID DO PRODUTO: ");
+                        int Id_Produto = input.nextInt();
+                        input.nextLine();
+
+                        Produto novo_produto = new Produto(Nome_Produto, Preco_Produto, Id_Produto);
 
                         Estoque.add(novo_produto);
 
@@ -62,7 +66,7 @@ public class Produto_test{
 
                         }else{
                             for(int i = 0; i < Estoque.size(); i++){
-                                Estoque.get(i).Exibicao();
+                                System.out.println(Estoque.get(i));
 
                             }
                         }break;

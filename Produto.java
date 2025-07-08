@@ -2,28 +2,38 @@ public class Produto{
 
     private String nome;
     private double preco;
+    private int id;
 
-    public Produto (String novo_nome, double novo_preco){
+    public Produto (String nome, double preco, int id){
 
-        if (novo_nome != null && !novo_nome.trim().isEmpty()){
-            this.nome = novo_nome;
-
-        }else{
-            System.out.println("Nome inválido.");
-            this.nome = "Sem nome";
-
-        }if (novo_preco >= 0){
-            this.preco = novo_preco;
+        if (nome != null && !nome.trim().isEmpty()){
+            this.nome = nome;
 
         }else{
-            System.out.println("Preço inválido.");
-            this.preco = 0;}
+            throw new IllegalArgumentException("NOME INVÁLIDO");
+
+        }if (preco >= 0){
+            this.preco = preco;
+
+        }else{
+            throw new IllegalArgumentException("PREÇO INVÁLIDO");
+        
+        }if (id >= 0){
+            this.id = id;
+
+        }else{
+            throw new IllegalArgumentException("ID INVÁLILDO");
+
+        }
 
     }public String getNome(){
         return this.nome;
 
     }public double getPreco(){
         return this.preco;
+
+    }public int getId(){
+        return this.id;
 
     }public void setNome(String adicionar_nome){
         if (adicionar_nome != null && !adicionar_nome.trim().isEmpty()){
@@ -41,7 +51,8 @@ public class Produto{
             System.out.println("Preço inválido.");
             this.preco = 0;}
 
-    }public void Exibicao(){
-        System.out.println("Produto: " + this.nome + "\nPreço: " + this.preco);
+    }@Override
+    public String toString(){
+        return "ID: " + id + " | " + "NOME: " + nome + " | " + "PREÇO: " + preco;
     }
 }
