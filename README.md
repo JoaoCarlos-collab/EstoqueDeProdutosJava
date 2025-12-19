@@ -1,2 +1,2 @@
-# Projetos_Em_Java
+# Projeto simples de estoque de produtos em java
 
